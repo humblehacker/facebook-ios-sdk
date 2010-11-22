@@ -55,13 +55,20 @@ static NSString *const kAPIURL = @"http://api-video.facebook.com/restserver.php"
     params: (NSDictionary*) userParams
     delegate: (id <FBRequestDelegate>) delegate
 {
+    if ([self sessionID] == nil) {
+        NSLog(@"Unable to retrieve session key from the access token.");
+        return;
+    }
+    
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:userParams];
     [params setObject:@"1.0" forKey:@"v"];
     [params setObject:@"facebook.video.upload" forKey:@"method"];
     [params setObject:[self sessionID] forKey:@"session_key"];
     [params setObject:apiKey forKey:@"api_key"];
     [params setObject:[self signatureForParams:params] forKey:@"sig"];
-    [params setObject:[NSData dataWithContentsOfURL:movieURL] forKey:@"video.mov"];
+    [params
+        setObject:[NSData dataWithContentsOfURL:movieURL]
+        forKey:[movieURL lastPathComponent]];
     [[FBRequest getRequestWithParams:params
         httpMethod:@"POST" delegate:delegate requestURL:kAPIURL] connect];
 }
