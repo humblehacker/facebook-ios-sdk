@@ -34,6 +34,7 @@
   FBDialog* _fbDialog;
   NSString* _appId;
   NSArray* _permissions;
+  BOOL _forceOldStyleAuth;
 }
 
 @property(nonatomic, copy) NSString* accessToken;
@@ -42,6 +43,7 @@
 
 @property(nonatomic, assign) id<FBSessionDelegate> sessionDelegate;
 
+@property(nonatomic, assign) BOOL forceOldStyleAuth;
 
 - (void)authorize:(NSString *)application_id
       permissions:(NSArray *)permissions

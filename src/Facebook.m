@@ -38,7 +38,8 @@ static NSString* kSDKVersion = @"2";
 
 @synthesize accessToken = _accessToken,
          expirationDate = _expirationDate,
-        sessionDelegate = _sessionDelegate;
+        sessionDelegate = _sessionDelegate,
+      forceOldStyleAuth = _forceOldStyleAuth;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // private
@@ -216,7 +217,7 @@ static NSString* kSDKVersion = @"2";
 
   _sessionDelegate = delegate;
 
-  [self authorizeWithFBAppAuth:YES safariAuth:YES];
+  [self authorizeWithFBAppAuth:!_forceOldStyleAuth safariAuth:!_forceOldStyleAuth];
 }
 
 /**
