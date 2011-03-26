@@ -13,6 +13,16 @@
     that we can’t parse.)
 
     http://bugs.developers.facebook.net/show_bug.cgi?id=10214
+
+    And yet another thing that popped up in follow-up discussions
+    is that your application has to be set to HTML/Web, not Native,
+    in the Facebook Application Settings:
+
+    http://stackoverflow.com/questions/5355846
+
+    If somebody knows a better, more sane way to upload video
+    from iOS to Facebook, I’d be happy to hear about it, so that
+    we can deprecate this hack and move towards a better future™.
 */
 @interface FBVideoUpload : NSObject
 {
