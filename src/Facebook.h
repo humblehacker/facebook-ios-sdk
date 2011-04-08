@@ -34,6 +34,7 @@
   FBDialog* _fbDialog;
   NSString* _appId;
   NSArray* _permissions;
+  BOOL _forceOldStyleAuth;
 }
 
 @property(nonatomic, copy) NSString* accessToken;
@@ -41,6 +42,8 @@
 @property(nonatomic, copy) NSDate* expirationDate;
 
 @property(nonatomic, assign) id<FBSessionDelegate> sessionDelegate;
+
+@property(nonatomic, assign) BOOL forceOldStyleAuth;
 
 - (id)initWithAppId:(NSString *)app_id;
 
